@@ -1,4 +1,5 @@
-﻿using System.Xml.Linq;
+﻿using libary.Enums;
+using System.Xml.Linq;
 
 namespace libary.DataModels
 {
@@ -11,9 +12,9 @@ namespace libary.DataModels
         }
         public int Id { get; private set; }
         public string Name { get; set; }
-        public string Genre { get; set; }
+        public Genre Genre { get; set; }
         public int PageCount { get; set; }
-        public int Price { get; set; }
+        public double Price { get; set; }
         public int Authorİd { get; set; }
 
         public bool Equals(Book? other)

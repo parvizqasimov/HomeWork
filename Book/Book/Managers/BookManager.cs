@@ -21,6 +21,10 @@ namespace libary.Managers
                 return;
             var found = data[index];
             found.Name = item.Name;
+            found.Genre = item.Genre;
+            found.PageCount = item.PageCount;
+            found.Price = item.Price;
+
             found.Authorİd = item.Authorİd;
         }
 
@@ -40,7 +44,7 @@ namespace libary.Managers
         }
 
 
-       
+
 
         public Book this[int index]
         {
@@ -64,7 +68,15 @@ namespace libary.Managers
             return this.GetEnumerator();
         }
 
-       
+        public Book GetBiyID(int id)
+        {
+            return Array.Find(data, item => item.Id == id);
+        }
+
+        public Book [] FindByName(string name)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 

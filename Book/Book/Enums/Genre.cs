@@ -1,8 +1,8 @@
 ﻿namespace libary.Enums
 {
-    public enum Genre
+    public enum Genre : byte
     {
-        Thriller,
+        Thriller = 1,
         Romance,
         Novel,
         Fantasy,

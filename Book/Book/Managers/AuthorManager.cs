@@ -62,6 +62,14 @@ namespace libary.Managers
             return this.GetEnumerator();
         }
 
-       
+        public Author GetBiyID(int id)
+        {
+            return Array.Find(data, item => item.Id == id)  ;
+        }
+
+        public Author [] FindByName(string name)
+        {
+            return Array.FindAll(data, item => item.Name.ToLower().StartsWith(name.ToLower()));  
+        }
     }
 }

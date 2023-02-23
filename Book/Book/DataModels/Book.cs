@@ -24,7 +24,7 @@ namespace libary.DataModels
 
         public override string ToString()
         {
-            return $"{Id} | {Name}";
+            return $"{Id} | Kitabin adi:{Name}| Kitabin sehfe sayi:{PageCount} | Kitabin qiymeti :{Price}";
         }
 
 

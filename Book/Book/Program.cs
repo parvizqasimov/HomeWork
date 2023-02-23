@@ -18,18 +18,19 @@ namespace libary
             var SelectedMenu = EnamHelper.ReadEnum<MenuTypes>("Menyu: ");
 
             Author author;
+            Book book;
             int id;
 
-            L1:
+        L1:
             switch (SelectedMenu)
             {
                 case MenuTypes.AuthorAdd:
                     author = new Author();
                     author.Name = PrimitiveHelper.ReadString("Muellifin adi :");
-                    authormanager.Add(author);
-                    author = new Author();
                     author.Surename = PrimitiveHelper.ReadString("Muellifin Soyadi :");
                     authormanager.Add(author);
+
+
 
                     Console.Clear();
                     Console.WriteLine("Emeliyyati siyahidan secin");
@@ -41,7 +42,7 @@ namespace libary
                     {
                         Console.WriteLine(item);
                     }
-                    id = PrimitiveHelper.ReadInt("Muellif id ");
+                    id = PrimitiveHelper.ReadInt("Muellifin idsi ");
 
                     if (id == 0)
                     {
@@ -59,11 +60,12 @@ namespace libary
                         goto case MenuTypes.AuthorEdit;
                     }
                     author.Name = PrimitiveHelper.ReadString("Muellifin adi:");
+                    author.Surename = PrimitiveHelper.ReadString("Muellifin Soyadi :");
                     Console.Clear();
                     goto case MenuTypes.AuthorGetAll;
-                    //break;
+                //break;
                 case MenuTypes.AuthorRemove:
-                    Console.WriteLine("Silmek etmek istediyiniz muellif adini secin:");
+                    Console.WriteLine("Silmek istediyiniz muellif adini secin:");
                     foreach (var item in authormanager)
                     {
                         Console.WriteLine(item);
@@ -78,7 +80,7 @@ namespace libary
                     authormanager.Remove(author);
                     Console.Clear();
                     goto case MenuTypes.AuthorGetAll;
-                    //break;
+                //break;
                 case MenuTypes.AuthorGetAll:
                     Console.Clear();
                     foreach (var item in authormanager)
@@ -89,7 +91,7 @@ namespace libary
                     SelectedMenu = EnamHelper.ReadEnum<MenuTypes>("Menyu: ");
                     goto L1;
                 case MenuTypes.AuthorGetById:
-                   
+
                     id = PrimitiveHelper.ReadInt("Muellif id ");
                     if (id == 0)
                     {
@@ -112,32 +114,112 @@ namespace libary
 
                     goto L1;
                 case MenuTypes.AuthorFindByName:
-                    string name= PrimitiveHelper.ReadString("axtar;sh ucun adin en azi 3 herfini qeyd edin!")
-                    var data = authormanager.FindByName(name);
-                    if (data.Length == 0)
-                    {
-                        Console.WriteLine("tapilmadi");                        
-                    }
+                //string name= PrimitiveHelper.ReadString("axtarish ucun adin en azi 3 herfini qeyd edin!")
+                //var data = authormanager.FindByName(name);
+                //if (data.Length == 0)
+                //{
+                //    Console.WriteLine("tapilmadi");                        
+                //}
+                //goto L1;
+                //foreach (var item in data)
+                //{
+                //    Console.WriteLine(item);
+                //}
+                //goto L1;
+
+                case MenuTypes.BookAdd:
+                    book = new Book();
+                    book.Name = PrimitiveHelper.ReadString("Kitabin adi:");
+                    book.PageCount = PrimitiveHelper.ReadInt("Kitabin sehife sayi:");
+                    book.Price = PrimitiveHelper.ReadInt("Kitabin qiymeti:");
+                    bookmanager.Add(book);
+                    Console.Clear();
+                    Console.WriteLine("Emeliyyati siyahidan secin");
+                    SelectedMenu = EnamHelper.ReadEnum<MenuTypes>("Menyu: ");
                     goto L1;
-                    foreach (var item in data)
+
+                case MenuTypes.BookEdit:
+                    Console.WriteLine("Redakte etmek istediyiniz kitabin id-sini secin:");
+                    foreach (var item in bookmanager)
                     {
                         Console.WriteLine(item);
                     }
+                    id = PrimitiveHelper.ReadInt("Kitabin idsi ");
 
+                    if (id == 0)
+                    {
+                        Console.WriteLine("Emeliyyati siyahidan secin");
+                        SelectedMenu = EnamHelper.ReadEnum<MenuTypes>("Menyu: ");
 
+                        goto L1;
+                    }
 
-                case MenuTypes.BookAdd:
-                    break;
-                case MenuTypes.BookEdit:
-                    break;
+                    book = bookmanager.GetBiyID(id);
+
+                    if (book == null)
+                    {
+                        Console.Clear();
+                        goto case MenuTypes.BookEdit;
+                    }
+                    book.Name = PrimitiveHelper.ReadString("Kitabin adi:");
+                    book.PageCount = PrimitiveHelper.ReadInt("Kitabin sehife sayi:");
+                    book.Price = PrimitiveHelper.ReadInt("Kitabin qiymeti:");
+                    Console.Clear();
+                    goto case MenuTypes.BookGetAll;
+
                 case MenuTypes.BookFindByName:
                     break;
                 case MenuTypes.BookGetAll:
-                    break;
+                    Console.Clear();
+                    foreach (var item in bookmanager)
+                    {
+                        Console.WriteLine(item);
+                    }
+                    Console.WriteLine("Emeliyyati siyahidan secin");
+                    SelectedMenu = EnamHelper.ReadEnum<MenuTypes>("Menyu: ");
+                    goto L1;
+
                 case MenuTypes.BookGetById:
-                    break;
+
+                    id = PrimitiveHelper.ReadInt("Kitabin id ");
+                    if (id == 0)
+                    {
+                        Console.WriteLine("Emeliyyati siyahidan secin");
+                        SelectedMenu = EnamHelper.ReadEnum<MenuTypes>("Menyu: ");
+
+                        goto L1;
+                    }
+                    book = bookmanager.GetBiyID(id);
+                    if (book == null)
+                    {
+                        Console.Clear();
+                        Console.WriteLine("Tapilmadi..");
+                        goto case MenuTypes.BookGetById;
+                    }
+                    Console.WriteLine(book);
+
+                    Console.WriteLine("Emeliyyati siyahidan secin");
+                    SelectedMenu = EnamHelper.ReadEnum<MenuTypes>("Menyu: ");
+
+                    goto L1;
+
                 case MenuTypes.BookRemove:
-                    break;
+                    Console.WriteLine("Silmek istediyiniz kitabin adini secin:");
+                    foreach (var item in bookmanager)
+                    {
+                        Console.WriteLine(item);
+                    }
+                    id = PrimitiveHelper.ReadInt("Kitabin id ");
+                    book = bookmanager.GetBiyID(id);
+                    if (book == null)
+                    {
+                        Console.Clear();
+                        goto case MenuTypes.BookRemove;
+                    }
+                    bookmanager.Remove(book);
+                    Console.Clear();
+                    goto case MenuTypes.BookGetAll;
+
 
             }
 

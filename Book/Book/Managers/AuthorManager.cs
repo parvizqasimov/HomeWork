@@ -21,8 +21,8 @@ namespace libary.Managers
             if (index == -1)
                 return;
             var found = data[index];
-            found.Name= item.Name;               
-            
+            found.Name= item.Name;
+            found.Surename = item.Surename;
         }
 
         public void Remove(Author item)

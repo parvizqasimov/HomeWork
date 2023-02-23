@@ -12,7 +12,7 @@ namespace libary.DataModels
         }
         public int Id { get; private set; }
         public string Name { get; set; }
-        public Genre Genre { get; set; }
+        public Genre genre { get; set; }
         public int PageCount { get; set; }
         public double Price { get; set; }
         public int Authorİd { get; set; }
@@ -24,9 +24,9 @@ namespace libary.DataModels
 
         public override string ToString()
         {
-            return $"{Id} | Kitabin adi:{Name}| Kitabin sehfe sayi:{PageCount} | Kitabin qiymeti :{Price}";
+            return $"{Id} | Kitabin adi:{Name}| Kitabin sehfe sayi:{PageCount} | Kitabin qiymeti :{Price} | Kitabin janri :{genre}";
         }
-
+         
 
     }
 }

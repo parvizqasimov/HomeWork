@@ -16,6 +16,7 @@ namespace libary
             Console.WriteLine("Emeliyyati siyahidan secin");
 
             var SelectedMenu = EnamHelper.ReadEnum<MenuTypes>("Menyu: ");
+            
 
             Author author;
             Book book;
@@ -29,9 +30,6 @@ namespace libary
                     author.Name = PrimitiveHelper.ReadString("Muellifin adi :");
                     author.Surename = PrimitiveHelper.ReadString("Muellifin Soyadi :");
                     authormanager.Add(author);
-
-
-
                     Console.Clear();
                     Console.WriteLine("Emeliyyati siyahidan secin");
                     SelectedMenu = EnamHelper.ReadEnum<MenuTypes>("Menyu: ");
@@ -132,6 +130,11 @@ namespace libary
                     book.Name = PrimitiveHelper.ReadString("Kitabin adi:");
                     book.PageCount = PrimitiveHelper.ReadInt("Kitabin sehife sayi:");
                     book.Price = PrimitiveHelper.ReadInt("Kitabin qiymeti:");
+
+                    Console.WriteLine("Kitabin janrini secin!");
+                    
+                    book.genre = EnamHelper.ReadEnum <Genre>("Kitabin janri:");
+
                     bookmanager.Add(book);
                     Console.Clear();
                     Console.WriteLine("Emeliyyati siyahidan secin");
@@ -164,6 +167,10 @@ namespace libary
                     book.Name = PrimitiveHelper.ReadString("Kitabin adi:");
                     book.PageCount = PrimitiveHelper.ReadInt("Kitabin sehife sayi:");
                     book.Price = PrimitiveHelper.ReadInt("Kitabin qiymeti:");
+                    book.genre = EnamHelper.ReadEnum<Genre>("Kitabin janri:");
+
+                  
+
                     Console.Clear();
                     goto case MenuTypes.BookGetAll;
 
@@ -223,8 +230,10 @@ namespace libary
 
             }
 
+            
 
+           
 
-        }
+            }
     }
 }

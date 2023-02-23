@@ -29,7 +29,7 @@ namespace libary.Helper
 
             income = Console.ReadLine();
 
-            if (!Enum.TryParse(typeof(MenuTypes), income, out object value) || !Enum.IsDefined(typeof(T), value))
+            if (!Enum.TryParse(typeof(T), income, out object value) || !Enum.IsDefined(typeof(T), value))
             {
                 goto L1;
             }

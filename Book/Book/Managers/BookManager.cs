@@ -21,7 +21,7 @@ namespace libary.Managers
                 return;
             var found = data[index];
             found.Name = item.Name;
-            found.Genre = item.Genre;
+            found.genre = item.genre;
             found.PageCount = item.PageCount;
             found.Price = item.Price;
 
